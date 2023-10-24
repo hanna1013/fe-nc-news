@@ -14,8 +14,7 @@ export const getSingleArticle = (article_id) => {
     return articleApi
     .get(`/articles/${article_id}`)
     .then((response) => {
-        console.log(response)
         return response.data.article;
-    })
+    });
    
 }
