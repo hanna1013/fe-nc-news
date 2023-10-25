@@ -58,4 +58,17 @@ ul {
   text-align: center;
   color: black;
   font-size: 30px;
+  text-decoration: underline;
+}
+
+.date{
+  text-align: left;
+  z-index: 100;
+  position: absolute;
+  margin: 0px;
+}
+
+.ArticleCard{
+  padding: 10px;
+
 }
