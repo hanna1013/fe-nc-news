@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+
 const articleApi = axios.create({
     baseURL: "https://nc-news-0brq.onrender.com/api"
 });
