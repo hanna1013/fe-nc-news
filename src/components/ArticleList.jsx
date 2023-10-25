@@ -9,15 +9,20 @@ const ArticleList = () => {
     
    const [articles, setArticles] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
+   const[isError, setIsError]=useState(false)
     
    useEffect(() => {
         getArticles().then((articlesFromApi) => {
             setArticles(articlesFromApi)
             setIsLoading(false);
-        })
+            setIsError(false)
+        }).catch(() => {
+            setIsError(true);
+})
     }, []);
 
     if(isLoading) return <p>Loading...</p>
+    else if(isError) return <h2>Warning: Error!</h2>
 
     return (
    

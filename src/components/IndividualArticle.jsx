@@ -16,8 +16,12 @@ const IndividualArticle = () => {
       getSingleArticle(article_id).then((articleFromApi) => { 
              setSingleArticle(articleFromApi);
              setIsLoading(false)
+             setIsError(false)
+        }).catch(() => {
+            setIsError(true);
         })
     }, [article_id]);
+    
     if(isLoading) return <p>Loading...</p>
     else if(isError) return <h2> Warning: Error! </h2>
 

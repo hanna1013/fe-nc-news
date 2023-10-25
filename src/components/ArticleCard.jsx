@@ -10,18 +10,18 @@ const ArticleCard = (props) => {
     return (
         
         <article className="ArticleCard">
-           
+            <Link to={`/articles/${article_id}`}>
             <Card elevation = {2} sx={{maxWidth: 500}} direction="row">
             <CardHeader title={title} subheader={topic}/>
             <CardMedia component="img" height="350" image={article_img_url} alt={`picture of ${title}`}/>
-            <b>Article id: <Link to={`/articles/${article_id}`}>{article_id}</Link></b>
+            <b>Article id: {article_id}</b>
             <h5>Created at: {created_at}</h5>
             <p>By: {author}</p>
             <p>Total Votes: {votes}</p>
             <p>Total Comments: {comment_count}</p>
           
             </Card>
-            
+            </Link>
         </article>
         
        
