@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import ArticleList from './components/ArticleList'
 import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom';
+import IndividualArticle from './components/IndividualArticle'
 
 function App() {
   const [] = useState()
@@ -14,8 +15,10 @@ function App() {
      <Header/>
      <Nav/>
      <ArticleList/>
+     <IndividualArticle/>
      <Routes>
       <Route path="/" element={<Home />} />
+      <Route path='/articles' element={<ArticleList/>}/>
      </Routes>
     </>
   )
