@@ -6,6 +6,8 @@ import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom';
 import IndividualArticle from './components/IndividualArticle'
 
+import CommentList from './components/CommentList'
+
 function App() {
   
 
@@ -17,6 +19,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/articles" element={<ArticleList/>} />
       <Route path="/articles/:article_id" element={<IndividualArticle/>} />
+      {/* <Route path="/articles/:article_id" element={<CommentList/>}/> */}
      </Routes>
     </>
   )
