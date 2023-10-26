@@ -25,6 +25,7 @@ export const getCommentsForSingleArticle = (article_id) => {
     return articleApi
     .get(`/articles/${article_id}/comments`)
     .then((response) => {
+        console.log(response)
         return response.data.comments;
     })
 }

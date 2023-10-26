@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CommentCard = (props) => {
+  const {body, authorComment, voteComment, comment_created_at} = props
         return (
           <div className="CommentCard">
             <Accordion>
@@ -17,6 +18,10 @@ const CommentCard = (props) => {
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
+                  {body}
+                  <p> By: {authorComment}</p>
+                  <h6>Created at: {comment_created_at}</h6>
+                  <h6>Votes: {voteComment}</h6>
                 </Typography>
               </AccordionDetails>
             </Accordion>

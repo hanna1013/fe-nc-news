@@ -30,7 +30,7 @@ const ArticleCard = (props) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     }
-    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count,body} = props
+    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count} = props
     return (
         
         <article className="ArticleCard">
@@ -54,13 +54,14 @@ const ArticleCard = (props) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Comments:</Typography>
-          <Typography paragraph>
-           <CommentList/>
+          <Typography paragraph> 
+          <CommentList/>
           </Typography>
           </CardContent>
       </Collapse>
             </Card>
             </Link>
+            
         </article>
         
        
