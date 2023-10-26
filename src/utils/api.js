@@ -20,3 +20,11 @@ export const getSingleArticle = (article_id) => {
     });
    
 }
+
+export const getCommentsForSingleArticle = (article_id) => {
+    return articleApi
+    .get(`/articles/${article_id}/comments`)
+    .then((response) => {
+        return response.data.comments;
+    })
+}

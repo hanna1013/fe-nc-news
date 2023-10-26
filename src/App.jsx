@@ -5,6 +5,7 @@ import ArticleList from './components/ArticleList'
 import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom';
 import IndividualArticle from './components/IndividualArticle'
+import CommentList from './components/CommentList'
 
 function App() {
   
