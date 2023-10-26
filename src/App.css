@@ -72,3 +72,11 @@ ul {
   padding: 10px;
 
 }
+
+.voteButton {
+border-color: red;
+}
+
+.voteButton:hover {
+  background-color: rgb(255, 84, 84);
+}

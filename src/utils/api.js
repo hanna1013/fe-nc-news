@@ -25,7 +25,6 @@ export const patchVote = (article_id, value) => {
     return articleApi
     .patch(`/articles/${article_id}`, { inc_votes: value})
     .then((response) => {
-        console.log(response)
-        return response.data.article
+        return response.data.article;
     })
 }

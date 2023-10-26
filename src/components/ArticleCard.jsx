@@ -1,9 +1,8 @@
 import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import Stack from '@mui/material/Stack';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
+import Vote from './Vote'
 
 const ArticleCard = (props) => {
     const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count} = props
@@ -17,7 +16,8 @@ const ArticleCard = (props) => {
             <b>Article id: {article_id}</b>
             <h5>Created at: {created_at}</h5>
             <p>By: {author}</p>
-            <p>Total Votes: {votes}</p>
+            <Vote
+            votes = {votes}/>
             <p>Total Comments: {comment_count}</p>
           
             </Card>
