@@ -24,7 +24,10 @@ else if(isError) return <h2> Warning: Error! </h2>
 return (
     <div>
     <ul>
-       {comments.map((comment) => {
+       {comments.map((comment) => { 
+        if(comment.length === 0){
+        return <p>No comments on this article</p>
+       } 
           return(
               <div className="CommentList">
                  <CommentCard key={comment.comment_id}
