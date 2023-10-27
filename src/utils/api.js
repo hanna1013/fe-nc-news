@@ -28,3 +28,15 @@ export const getCommentsForSingleArticle = (article_id) => {
         return response.data.comments;
     })
 }
+
+export const postComment = (article_id, body) => {
+    return articleApi
+    .post(`/articles/${article_id}/comments`, {
+        username: "jessjelly",
+        body: body
+    })
+    .then((response) => {
+        console.log(response)
+        return response.data.comments;
+    })
+}

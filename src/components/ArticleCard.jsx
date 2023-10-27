@@ -30,7 +30,7 @@ const ArticleCard = (props) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     }
-    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count} = props
+    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count, comments} = props
     return (
         
         <article className="ArticleCard">
@@ -55,7 +55,7 @@ const ArticleCard = (props) => {
         <CardContent>
           <Typography paragraph>Comments:</Typography>
           <Typography paragraph> 
-          <CommentList/>
+          <CommentList comments = {comments}/>
           </Typography>
           </CardContent>
       </Collapse>
