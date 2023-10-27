@@ -29,7 +29,7 @@ export const getCommentsForSingleArticle = (article_id) => {
     })
 }
 
-export const postComment = (article_id, body) => {
+export const postComment = (body, article_id) => {
     return articleApi
     .post(`/articles/${article_id}/comments`, {
         username: "jessjelly",
@@ -37,6 +37,6 @@ export const postComment = (article_id, body) => {
     })
     .then((response) => {
         console.log(response)
-        return response.data.comments;
+        return response.data.comment;
     })
 }

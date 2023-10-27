@@ -21,9 +21,10 @@ useEffect(() => {
     })
 }, [article_id]);
 
-const addNewComment = (username, body) => {
-postComment(article_id, username, body).then((newCommentFromApi) => {
-    setComments((currentComments) => [newCommentFromApi, ...currentComments])
+addNewComment = (commentData) => {
+postComment(commentData).then((newCommentFromApi) => {
+    console.log(newCommentFromApi)
+    setComments((currentComments) => [newCommentFromApi, ...currentComments]);
 })
 }
 
@@ -45,7 +46,7 @@ return (
                 )
             })}
         </ul>
-        <CommentAdder setComments={setComments}/>
+        <CommentAdder addNewComment={addNewComment}/>
         </div>   
 )
 }
