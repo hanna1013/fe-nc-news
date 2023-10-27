@@ -5,9 +5,9 @@ import { patchVote } from '../utils/api';
 
 
 const Vote = ({votes}) => {
-    const [newVotes, setNewVotes] = useState(votes);
+    const [newVotes, setNewVotes] = useState(0);
     const[error, setError] = useState(false)
-    const { article_id} = useParams();
+    const {article_id} = useParams();
 
     const voteUpdate = (value) => {
         setNewVotes((currentVotes) => {
@@ -16,7 +16,7 @@ const Vote = ({votes}) => {
         })
        
         patchVote(article_id, value).catch(() => {
-             setNewVotes(newVotes);
+             setNewVotes(votes);
              setError(true)
         });
         
@@ -25,6 +25,7 @@ const Vote = ({votes}) => {
 
     return (
         <div> 
+            
             {error ? <p>Error, please try again!</p> : false}
             <button className="voteButton"
             disabled={newVotes === 1}
@@ -33,7 +34,7 @@ const Vote = ({votes}) => {
                 voteUpdate(1);
             }}>
                 Like
-            </button> <p className="voteNum">{newVotes}</p>
+            </button> <p className="voteNum">{newVotes + votes}</p>
             
         </div>
     )

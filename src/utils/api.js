@@ -21,10 +21,11 @@ export const getSingleArticle = (article_id) => {
    
 }
 
-export const patchVote = (article_id, value) => {
+export const patchVote = (value, article_id) => {
     return articleApi
     .patch(`/articles/${article_id}`, { inc_votes: value})
     .then((response) => {
+        console.log(response)
         return response.data.article;
     })
 }
