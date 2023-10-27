@@ -80,3 +80,6 @@ border-color: red;
 .voteButton:hover {
   background-color: rgb(255, 84, 84);
 }
+.CommentCard{
+  padding: 5px;
+}
