@@ -2,8 +2,8 @@ import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import Stack from '@mui/material/Stack';
 import CardMedia from '@mui/material/CardMedia';
+import Vote from './Vote'
 import CardContent from '@mui/material/CardContent';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
@@ -44,6 +44,10 @@ const ArticleCard = (props) => {
             <b>Article id:{article_id}</b>
             <h5>Created at: {created_at}</h5>
             <p>By: {author}</p>
+            <Vote
+            votes = {votes}/>
+            <p>Total Comments: {comment_count}</p>
+          
             <p>Total Votes: {votes}</p>
             <p>Comments:{comment_count}</p>
             <ExpandMore

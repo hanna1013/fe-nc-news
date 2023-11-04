@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import { getSingleArticle } from '../utils/api'
 import { useParams } from 'react-router-dom';
 import ArticleCard from './ArticleCard';
+import Vote from './Vote';
 
 
 const IndividualArticle = ({user}) => {
@@ -37,6 +38,7 @@ const IndividualArticle = ({user}) => {
                         votes={singleArticle.votes}
                         comment_count={singleArticle.comment_count}
                         />
+                        
         </section>
     )
 }
