@@ -1,12 +1,14 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import { getCommentsForSingleArticle } from '../utils/api'
 import {useParams} from 'react-router-dom';
 import CommentCard from './CommentCard';
-import CommentAdder from './CommentAdder'
-import { postComment } from '../utils/api';
+import {UserContext} from './User'
+import {CommentAdder} from './CommentAdder'
+
 
 
 const CommentList = () => {
+const {user} = useContext(UserContext)
 const [comments, setComments] = useState([]);
 const {article_id} = useParams();
 const [isLoading, setIsLoading] = useState(true);
@@ -21,32 +23,21 @@ useEffect(() => {
     })
 }, [article_id]);
 
-addNewComment = (commentData) => {
-postComment(commentData).then((newCommentFromApi) => {
-    console.log(newCommentFromApi)
-    setComments((currentComments) => [newCommentFromApi, ...currentComments]);
-})
-}
 
-
-
-if(isLoading) return <p>Loading...</p>
-else if(isError) return <h2> Warning: Error! </h2>
-return (
+return isLoading ? <p>Loading...</p>
+: 
+(
     <div>
     <ul>
        {comments.map((comment) => { 
-        if(comment.length === 0){
-        return <p>No comments on this article</p>
-       } 
           return(
-              <div className="CommentList">
-                <li key="comment.body">{comment.body}</li>
+              <div key={comment.comment_id} className="CommentList">
+                <li >{comment.body}</li>
                     </div>
                 )
             })}
         </ul>
-        <CommentAdder addNewComment={addNewComment}/>
+        <CommentAdder article_id={article_id} setComments={setComments} />
         </div>   
 )
 }
