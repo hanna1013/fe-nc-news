@@ -29,8 +29,8 @@ const ArticleList = () => {
         <ul>
             {articles.map((article) => {
                 return(
-                    <div className="ArticleList">
-                        <ArticleCard key={article.article_id}
+                    <div key={article.article_id} className="ArticleList">
+                        <ArticleCard 
                         title={article.title}
                         article_img_url={article.article_img_url}
                         topic={article.topic}

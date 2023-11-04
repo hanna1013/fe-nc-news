@@ -5,7 +5,7 @@ import ArticleCard from './ArticleCard';
 import Vote from './Vote';
 
 
-const IndividualArticle = () => {
+const IndividualArticle = ({user}) => {
     const [singleArticle, setSingleArticle] = useState({});
     const { article_id } = useParams();
     const [isLoading, setIsLoading] = useState(true);

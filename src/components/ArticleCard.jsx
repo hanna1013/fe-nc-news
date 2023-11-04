@@ -11,6 +11,7 @@ import Collapse from '@mui/material/Collapse';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CommentList from './CommentList';
+import {useParams} from 'react-router-dom';
 
 
 const ExpandMore = styled((props) => {
@@ -25,12 +26,14 @@ const ExpandMore = styled((props) => {
   }));
 
 const ArticleCard = (props) => {
+  const routeParams = useParams()
+ 
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
     }
-    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count} = props
+    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count, setComments, user} = props
     return (
         
         <article className="ArticleCard">
@@ -57,10 +60,11 @@ const ArticleCard = (props) => {
         </ExpandMore>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Comments:</Typography>
-          <Typography paragraph> 
-          <CommentList/>
-          </Typography>
+          {/* <Typography paragraph>Comments:</Typography>
+          <Typography paragraph>  */}
+          <CommentList setComments = {setComments} article_id = {article_id}/>
+         
+          {/* </Typography> */}
           </CardContent>
       </Collapse>
             </Card>

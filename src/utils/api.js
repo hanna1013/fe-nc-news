@@ -29,6 +29,16 @@ export const getCommentsForSingleArticle = (article_id) => {
         return response.data.comments;
     })
 }
+
+
+export const postComment = (article_id, comment) => {
+    return articleApi
+    .post(`/articles/${article_id}/comments`, comment)
+    .then((response) => {
+        console.log(response.data)
+        return response.data;
+    })
+}
 export const patchVote = (value, article_id) => {
     return articleApi
     .patch(`/articles/${article_id}`, { inc_votes: value})
