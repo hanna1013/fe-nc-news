@@ -7,12 +7,15 @@ import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom';
 import IndividualArticle from './components/IndividualArticle'
 import { UserContext } from './components/User'
-
+import TopicsList from './components/TopicsList'
+import Login from './components/Login'
 
 function App() {
 
   const [user, setUser] = useState("tickle122");
 
+  
+  
   return (
     <UserContext.Provider value={{ user, setUser}}>
     <div>
@@ -21,9 +24,9 @@ function App() {
      
      <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/articles" element={<ArticleList/>} />
+      <Route path="/articles" element={<ArticleList />} />
       <Route path="/articles/:article_id" element={<IndividualArticle user={user}/>} />
-      {/* { <Route path="/articles/:article_id" element={<CommentList />}/> } */}
+      <Route path="/login" element={<Login/>}/>
      </Routes>
     </div>
     </UserContext.Provider>

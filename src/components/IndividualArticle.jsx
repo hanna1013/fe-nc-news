@@ -1,15 +1,18 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import { getSingleArticle } from '../utils/api'
 import { useParams } from 'react-router-dom';
 import ArticleCard from './ArticleCard';
-import Vote from './Vote';
+import { CommentAdder } from './CommentAdder';
+import { UserContext } from './User'
 
 
-const IndividualArticle = ({user}) => {
+const IndividualArticle = ({setComments}) => {
     const [singleArticle, setSingleArticle] = useState({});
-    const { article_id } = useParams();
+    const { article_id} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const[isError, setIsError] = useState(false);
+    const {user} = useContext(UserContext)
+    
 
    
 
@@ -38,7 +41,10 @@ const IndividualArticle = ({user}) => {
                         votes={singleArticle.votes}
                         comment_count={singleArticle.comment_count}
                         />
-                        
+                        <div>
+                        <CommentAdder article_id={article_id} setComments={setComments}/> 
+                        </div>
+                      
         </section>
     )
 }

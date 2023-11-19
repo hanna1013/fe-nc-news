@@ -5,10 +5,10 @@ import { UserContext } from './User'
 
 
 export const CommentAdder = ({article_id, setComments}) => {
-    const [newComment, setNewComment] = useState("");   
-    const [posted, setPosted] = useState(null)
-let { user } = useContext(UserContext)
-const [error, setError] = useState(false)
+const [newComment, setNewComment] = useState("");   
+const [posted, setPosted] = useState(null)
+const { user } = useContext(UserContext)
+const [isError, setError] = useState(false)
 
 
 const handleSubmit = (event) => {
@@ -17,8 +17,9 @@ const handleSubmit = (event) => {
         username: user,
         body: newComment,
     };
-    setPosted(true)
-    postComment(article_id, comment, user).then(({response}) => {
+    setPosted(true);
+    postComment(article_id, comment, user)
+    .then((response) => {
         console.log(response)
         setComments((currComments) => {
             return [response, ...currComments];
@@ -26,12 +27,12 @@ const handleSubmit = (event) => {
         setPosted(null);
         setNewComment("");
     })
-    .catch((error) => {
+    .catch((isError) => {
+        console.log(isError)
         setPosted(null);
         setError(true);
         setNewComment("")
-    })
-   
+    });
 };
     return (
        
@@ -45,7 +46,9 @@ const handleSubmit = (event) => {
                 required
                 />
             </label>
-            <button disabled={posted} type="submit">Add comment</button>
+            <button className="commentButton" disabled={posted} type="submit">
+                Add comment
+            </button>
         </form>
     )
 }

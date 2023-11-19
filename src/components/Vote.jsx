@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { patchVote } from '../utils/api';
 
-
-
 const Vote = ({votes}) => {
     const [newVotes, setNewVotes] = useState(0);
     const[error, setError] = useState(false)

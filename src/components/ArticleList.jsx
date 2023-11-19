@@ -1,31 +1,76 @@
 
 import { useState, useEffect} from 'react'
 import { getArticles } from '../utils/api'
-import {Link} from 'react-router-dom'
+import {Link, useSearchParams} from 'react-router-dom'
 import ArticleCard from './ArticleCard'
-import Grid from '@mui/material/Grid'
+import {useParams} from 'react-router-dom';
 
 const ArticleList = () => {
-    
    const [articles, setArticles] = useState([]);
+   const [searchParams, setSearchParams] = useSearchParams();
    const [isLoading, setIsLoading] = useState(true);
    const[isError, setIsError]=useState(false)
-    
+   const sortArray = ["created_at", "comment_count", "votes"]
+
+
+   const sortFilter = (sortby) => {
+   setSearchParams((newParams) => {
+       newParams.set("sortby", sortby);
+       return newParams;
+   });
+   }
+
+   const orderFilter = (order) => {
+    setSearchParams((newParams) => {
+        newParams.set("order", order);
+        return newParams;
+    })
+   }
+
    useEffect(() => {
-        getArticles().then((articlesFromApi) => {
+    const topicParam = searchParams.get("topics")
+    const sortParam = searchParams.get("sortby")
+    const orderParam = searchParams.get("order")
+        getArticles(topicParam, sortParam, orderParam).then((articlesFromApi) => {
             setArticles(articlesFromApi)
             setIsLoading(false);
             setIsError(false)
         }).catch(() => {
             setIsError(true);
 })
-    }, []);
+    }, [searchParams]);
 
     if(isLoading) return <p>Loading...</p>
     else if(isError) return <h2>Warning: Error!</h2>
 
     return (
-   
+        <div>
+        <section>
+            <select
+            name="sort"
+            className="sorting"
+            onChange={(event) => sortFilter(event.target.value)}>
+                {sortArray.map((sort) => {
+                    return <option key={sort}>{sort}</option>
+                })}
+
+            </select>
+        </section>
+        <section>
+            <button
+            onClick={() =>  orderFilter("DESC")}
+            className='ordered'
+            >
+            DESC
+            </button>
+
+            <button
+            onClick={() =>  orderFilter("ASC")}
+            className='ordered'
+            >
+                ASC
+            </button>
+        </section>
         <ul>
             {articles.map((article) => {
                 return(
@@ -41,12 +86,12 @@ const ArticleList = () => {
                         comment_count={article.comment_count}
 
                         />
-               
+                        
                 </div>
                 )
                 })}
              </ul>
-    
+             </div>
     ) 
 
 }

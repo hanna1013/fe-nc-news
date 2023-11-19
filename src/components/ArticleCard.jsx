@@ -12,6 +12,9 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CommentList from './CommentList';
 import {useParams} from 'react-router-dom';
+import {CommentAdder} from './CommentAdder'
+import Grid from '@mui/material/Grid';
+
 
 
 const ExpandMore = styled((props) => {
@@ -33,7 +36,7 @@ const ArticleCard = (props) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     }
-    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count, setComments, user} = props
+    const {title,article_img_url,topic,article_id, author,created_at,votes,comment_count, setComments} = props
     return (
         
         <article className="ArticleCard">
@@ -46,10 +49,8 @@ const ArticleCard = (props) => {
             <p>By: {author}</p>
             <Vote
             votes = {votes}/>
-            <p>Total Comments: {comment_count}</p>
-          
             <p>Total Votes: {votes}</p>
-            <p>Comments:{comment_count}</p>
+            <p>Comments: {comment_count}</p>
             <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -62,8 +63,7 @@ const ArticleCard = (props) => {
         <CardContent>
           {/* <Typography paragraph>Comments:</Typography>
           <Typography paragraph>  */}
-          <CommentList setComments = {setComments} article_id = {article_id}/>
-         
+          <CommentList setComments = {setComments} article_id = {article_id} author={author}/>
           {/* </Typography> */}
           </CardContent>
       </Collapse>
