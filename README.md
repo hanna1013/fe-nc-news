@@ -1,7 +1,5 @@
 # Brief Introduction
 
-General info about your app, a brief description of what the project is, and how to use your app.
-
 NC-News is a React application which incorporates the back-end that creates a complete full-stack app. This project was designed to resemble a typical social news webpage, which allows a user to do a number of expected things such as rate the content and post comments under a particular article. Users are also able to delete specific comments they have posted, they can log-in and filter articles. This was successfully achieved by the use of axios in the front-end which retrieved the data by making HTTP requests to the back-end. 
 
 This React project was written in JSX and functional components were also used.
